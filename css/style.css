@@ -1,0 +1,8 @@
+body { 
+background: linear-gradient(135deg, rgba(235,200,250,1) 0%, rgba(214,254,255,1) 100%);
+}
+
+.card {
+    background-color: transparent;
+
+}
