@@ -22,7 +22,7 @@
 
 // variables
 var totalScoreValue = [];
-var goalGeneratedValue = [];
+var goalGeneratedValue = $("#goalGeneratedValue").val();
 var oneCrystalValue = $("#oneCrystalValue").val();
 var twoCrystalValue = $("#twoCrystalValue").val();
 var threeCrystalValue = $("#threeCrystalValue").val();
@@ -34,12 +34,11 @@ var score = 0;
 
 // Create a function that generates the goal number named generateGoal
 function generateGoal() {
-  var goalGenerated = Math.floor(Math.random() * 10 + 1);
-  console.log("goal generated: " + goalGenerated);
-  goalGeneratedValue.push(goalGenerated);
-
+  goalGeneratedValue = Math.floor(Math.random() * 10 + 1);
+  console.log("goal value: " + goalGeneratedValue);
   $("#goal").empty();
   $("#goal").append("<h1>YOUR GOAL: " + goalGeneratedValue + "</h1>");
+
 }
 
 generateGoal();
@@ -64,17 +63,22 @@ function generateValue() {
 // Calls the generate value fucntion & generates the values for each crystal
 generateValue();
 
-
+function reset() {
+$("#goal").empty();
+generateGoal();
+generateValue();
+totalScoreValue.length = 0;
+console.log("everything has been refreshed");
+}
 
 function addScore() {
   
 
   // if (totalScoreValue < goalGeneratedValue) {
-    var userTotalScore = totalScoreValue.reduce((a, b) => a + b, 0);
-    // userTotalScore.push(totalScoreValue);
+    userTotalScore = totalScoreValue.reduce((a, b) => a + b, 0);
     console.log("this is it " + userTotalScore);
-    // checkWin();
-    // checkLoss();
+    checkWin();
+    checkLoss();
   }
 
 
@@ -90,73 +94,48 @@ $(".crystal1").click(function() {
   
   //CRYSTAL 2!
   $(".crystal2").click(function() {
-    // console.log(twoCrystalValue);
     totalScoreValue.push(twoCrystalValue);
-    // userTotalScore = crystalValue.reduce(function(a, b) {
-    //   return a + b;
-    // }, 0);
     addScore();
-  
-    console.log("yo" + userTotalScore);
-    // checkWin();
-    // checkLoss();
+    checkWin();
+    checkLoss();
   });
   
   //CRYSTAL 3!
   $(".crystal3").click(function() {
-    // console.log(threeCrystalValue);
     totalScoreValue.push(threeCrystalValue);
-    // userTotalScore = crystalValue.reduce(function(a, b) {
-    //   return a + b;
-    // }, 0);
     addScore();
-  
-    console.log("yo" + userTotalScore);
-    // checkWin();
-    // checkLoss();
+    checkWin();
+    checkLoss();
   });
   
   //CRYSTAL 4!
   $(".crystal4").click(function() {
-    // console.log(fourCrystalValue);
     totalScoreValue.push(fourCrystalValue);
-    // userTotalScore = crystalValue.reduce(function(a, b) {
-    //   return a + b;
-    // }, 0);
     addScore();
-    console.log("yo" + userTotalScore);
-
-  
-  //   totalScoreValue.push(userTotalScore);
-    // checkWin();
-    // checkLoss();
+    checkWin();
+    checkLoss();
   });
 
   addScore();
   
-// function checkWin() {
-//   if (userTotalScore == goalGeneratedValue) {
-//     // wins increase
-//     wins++;
-//     generateGoal();
-//     generateValue();
-//     console.log("winner");
-//     console.log("wins" + wins);
-//     reset();
-//     // goal is reset
-//   }
-// }
+function checkWin() {
+  if (userTotalScore == goalGeneratedValue) {
+    // wins increase
+    wins++;
+    console.log("winner");
+    console.log("wins" + wins);
+    reset();
+  }
+}
 
-// function checkLoss() {
-//   if (userTotalScore > goalGeneratedValue) {
-//     loss++;
-//     generateGoal();
-//     generateValue();
-//     console.log("loser!");
-//     console.log(loss);
-//     reset();
-//   }
-// }
+function checkLoss() {
+  if (userTotalScore > goalGeneratedValue) {
+    loss++;
+    console.log("loser!");
+    console.log(loss);
+    reset();
+  }
+}
 
 
 // function checkWin() {
