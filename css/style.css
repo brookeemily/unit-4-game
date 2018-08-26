@@ -6,3 +6,38 @@ background: linear-gradient(135deg, rgba(235,200,250,1) 0%, rgba(214,254,255,1) 
     background-color: transparent;
 
 }
+
+.header {
+    color: grey;
+    text-align: center;
+    background-color: white;
+    opacity: 0.5;
+    margin: 2% 0%;
+    padding: 2% 5%;
+}
+
+.instructions {
+    color: grey;
+    text-align: center;
+    background-color: white;
+    opacity: 0.5;
+    margin: 2% 0%;
+    padding: 2% 5%;
+}
+
+.goal {
+    color: grey;
+    text-align: center;
+    background-color: white;
+    opacity: 0.5;
+    margin: 2% 0%;
+    padding: 2% 5%;
+}
+.scoreboard {
+    color: grey;
+    text-align: center;
+    background-color: white;
+    opacity: 0.5;
+    margin: 2% 0%;
+    padding: 2% 5%;
+}

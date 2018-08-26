@@ -34,49 +34,49 @@ var score = 0;
 
 // Create a function that generates the goal number named generateGoal
 function generateGoal() {
-  goalGeneratedValue = Math.floor(Math.random() * 10 + 1);
+  goalGeneratedValue = Math.floor(Math.random() * 50 + 1);
   console.log("goal value: " + goalGeneratedValue);
-  $("#goal").empty();
-  $("#goal").append("<h1>YOUR GOAL: " + goalGeneratedValue + "</h1>");
+  $(".goal").empty();
+  $(".goal").append("<h1>YOUR GOAL: " + goalGeneratedValue + "</h1>");
 
 }
-
+// run the generate goal function
 generateGoal();
 
-// Run function on document load
-
-// If the generateGoal function is run, assign each crystal a numeric value
+// function that generates value for each crystal
 function generateValue() {
-  oneCrystalValue = Math.floor(Math.random() * 1 + 1);
+  oneCrystalValue = Math.floor(Math.random() * 15 + 1);
   console.log("crystal1 value: " + oneCrystalValue);
 
-  twoCrystalValue = Math.floor(Math.random() * 1 + 1);
+  twoCrystalValue = Math.floor(Math.random() * 20 + 1);
   console.log("crystal2 value: " + twoCrystalValue);
 
-  threeCrystalValue = Math.floor(Math.random() * 1 + 1);
+  threeCrystalValue = Math.floor(Math.random() * 10 + 1);
   console.log("crystal3 value: " + threeCrystalValue);
 
-  fourCrystalValue = Math.floor(Math.random() * 1 + 1);
+  fourCrystalValue = Math.floor(Math.random() * 25 + 1);
   console.log("crystal4 value: " + fourCrystalValue);
 }
 
 // Calls the generate value fucntion & generates the values for each crystal
 generateValue();
 
+// reset function
 function reset() {
-$("#goal").empty();
+$(".goal").empty();
 generateGoal();
 generateValue();
 totalScoreValue.length = 0;
 console.log("everything has been refreshed");
 }
 
+// add score
 function addScore() {
-  
-
   // if (totalScoreValue < goalGeneratedValue) {
     userTotalScore = totalScoreValue.reduce((a, b) => a + b, 0);
     console.log("this is it " + userTotalScore);
+    $("#score").empty();
+    $("#score").append("<h1>YOUR SCORE: " + userTotalScore + "</h1>");
     checkWin();
     checkLoss();
   }
@@ -124,6 +124,10 @@ function checkWin() {
     wins++;
     console.log("winner");
     console.log("wins" + wins);
+    $(".wins").empty();
+    $(".wins").append("<h1>WINS: " + wins + "</h1>");
+    $("#score").empty();
+    $("#score").append("<h1>YOUR SCORE: 0 </h1>");
     reset();
   }
 }
@@ -131,6 +135,10 @@ function checkWin() {
 function checkLoss() {
   if (userTotalScore > goalGeneratedValue) {
     loss++;
+    $(".loss").empty();
+    $(".loss").append("<h1>LOSSES: " + loss + "</h1>");
+    $("#score").empty();
+    $("#score").append("<h1>YOUR SCORE: 0 </h1>");
     console.log("loser!");
     console.log(loss);
     reset();
